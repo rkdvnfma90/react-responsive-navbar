@@ -8,14 +8,14 @@ const Nav = styled.nav``
 const NavbarLogo = styled(Link)``
 const MenuIcon = styled.div``
 const Icon = styled.i``
-const NavContainer = styled.ul``
+const NavMenu = styled.ul``
 const NavItem = styled.li``
 const NavLinks = styled(Link)``
 const NavLinksMobile = styled(Link)``
 
 const Navbar = () => {
   const [click, setClick] = useState(false)
-  const [dropdown, setDropdown] = useState(false)
+  const [dropdown, setDropdown] = useState(true)
 
   const handleClick = () => setClick(!click)
   const closeMobileMenu = () => setClick(false)
@@ -30,7 +30,7 @@ const Navbar = () => {
         </MenuIcon>
 
         {/* click ? 'nav-menu active' : 'nav-menu' */}
-        <NavContainer>
+        <NavMenu>
           <NavItem>
             <NavLinks to='/' onClick={closeMobileMenu}>
               홈
@@ -52,7 +52,7 @@ const Navbar = () => {
               회원가입
             </NavLinksMobile>
           </NavItem>
-        </NavContainer>
+        </NavMenu>
         <Button />
       </Nav>
     </>
