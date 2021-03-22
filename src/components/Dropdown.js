@@ -40,7 +40,7 @@ const Dropdown = () => {
         {menuitems.map((item, index) => (
           <DropdownItem key={index}>
             <DropdownLink
-              cName={item.cName}
+              cname={item.cname}
               to={item.path}
               onClick={() => setClick(false)}
             >

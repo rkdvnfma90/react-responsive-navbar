@@ -1,17 +1,147 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import Button from './Button'
 import Dropdown from './Dropdown'
 
-const Nav = styled.nav``
-const NavbarLogo = styled(Link)``
-const MenuIcon = styled.div``
-const Icon = styled.i``
-const NavMenu = styled.ul``
-const NavItem = styled.li``
-const NavLinks = styled(Link)``
-const NavLinksMobile = styled(Link)``
+const Nav = styled.nav`
+  background: linear-gradient(#000, #808080);
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+`
+const NavbarLogo = styled(Link)`
+  color: #fff;
+  justify-self: start;
+  margin-left: 20px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 2rem;
+
+  @media screen and (max-width: 960px) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(25%, 50%);
+  }
+`
+
+const MenuIcon = styled.div`
+  display: none;
+
+  @media screen and (max-width: 960px) {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(-100%, 60%);
+    font-size: 1.8rem;
+    cursor: pointer;
+  }
+`
+
+const IconStyles = css`
+  ${({ cname }) =>
+    cname === 'fa-bars' &&
+    css`
+      color: #fff;
+    `}
+
+  ${({ cname }) =>
+    cname === 'fa-times' &&
+    css`
+      color: #fff;
+      font-size: 2rem;
+    `}
+`
+const Icon = styled.i`
+  ${IconStyles}
+`
+const NavMenu = styled.ul`
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  grid-gap: 10px;
+  list-style: none;
+  text-align: center;
+  width: 70vw;
+  justify-content: end;
+  margin-right: 2rem;
+
+  @media screen and (max-width: 960px) {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 90vh;
+    position: absolute;
+    top: 80px;
+    left: -100%;
+    opacity: 1;
+    transition: all 0.5s ease;
+
+    ${({ cname }) =>
+      cname === 'active' &&
+      css`
+        background: #242222;
+        left: 0;
+        z-index: 1;
+      `}
+  }
+`
+
+const NavItem = styled.li`
+  display: flex;
+  align-items: center;
+  height: 80px;
+`
+
+const NavLinks = styled(Link)`
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.primaryColor};
+    border-radius: 4px;
+    transition: all 0.2s ease-out;
+  }
+
+  @media screen and (max-width: 960px) {
+    text-align: center;
+    padding: 2rem;
+    width: 100%;
+    display: table;
+
+    &:hover {
+      border-radius: 0;
+      background-color: ${({ theme }) => theme.primaryColor};
+    }
+  }
+`
+
+const NavLinksMobile = styled(Link)`
+  display: none;
+
+  @media screen and (max-width: 960px) {
+    display: block;
+    text-align: center;
+    padding: 1.5rem;
+    margin: 2rem auto;
+    border-radius: 4px;
+    width: 80%;
+    background: #1888ff;
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.5rem;
+
+    &:hover {
+      background: #fff;
+      color: ${({ theme }) => theme.primaryColor};
+      transition: 250ms;
+    }
+  }
+`
 
 const Navbar = () => {
   const [click, setClick] = useState(false)
@@ -26,11 +156,13 @@ const Navbar = () => {
         <NavbarLogo to='/'>로고</NavbarLogo>
 
         <MenuIcon onClick={handleClick}>
-          <Icon className={click ? 'fas fa-times' : 'fas fa-bars'} />
+          <Icon
+            className={click ? 'fas fa-times' : 'fas fa-bars'}
+            cname={click ? 'fa-times' : 'fa-bars'}
+          />
         </MenuIcon>
 
-        {/* click ? 'nav-menu active' : 'nav-menu' */}
-        <NavMenu>
+        <NavMenu cname={click ? 'active' : ''}>
           <NavItem>
             <NavLinks to='/' onClick={closeMobileMenu}>
               홈
@@ -53,7 +185,8 @@ const Navbar = () => {
             </NavLinksMobile>
           </NavItem>
         </NavMenu>
-        <Button />
+
+        <Button btnName='회원가입' />
       </Nav>
     </>
   )

@@ -19,12 +19,16 @@ const StyledButton = styled.button`
     border-radius: 4px;
     border: 2px solid ${({ theme }) => theme.primaryColor};
   }
+
+  @media screen and (max-width: 960px) {
+    display: none;
+  }
 `
 
-const Button = () => {
+const Button = ({ btnName }) => {
   return (
     <Link to='sign-up'>
-      <StyledButton>회원가입</StyledButton>
+      <StyledButton>{btnName}</StyledButton>
     </Link>
   )
 }
