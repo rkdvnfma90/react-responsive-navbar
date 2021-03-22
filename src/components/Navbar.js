@@ -55,6 +55,23 @@ const IconStyles = css`
       color: #fff;
       font-size: 2rem;
     `}
+  
+    ${({ cname }) =>
+    cname === 'fa-times' &&
+    css`
+      color: #fff;
+      font-size: 2rem;
+    `}
+
+    ${({ cname }) =>
+    cname === 'fa-caret-down' &&
+    css`
+      color: #fff;
+      font-size: 2rem;
+      @media screen and (max-width: 960px) {
+        display: none;
+      }
+    `}
 `
 const Icon = styled.i`
   ${IconStyles}
@@ -180,7 +197,8 @@ const Navbar = () => {
           </NavItem>
           <NavItem onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
             <NavLinks to='/services' onClick={closeMobileMenu}>
-              서비스 <Icon className='fas fa-caret-down' />
+              서비스{' '}
+              <Icon className='fas fa-caret-down' cname='fa-caret-down' />
             </NavLinks>
             {dropdown && <Dropdown />}
           </NavItem>
