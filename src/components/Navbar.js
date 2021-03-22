@@ -67,7 +67,6 @@ const IconStyles = css`
     cname === 'fa-caret-down' &&
     css`
       color: #fff;
-      font-size: 2rem;
       @media screen and (max-width: 960px) {
         display: none;
       }
@@ -176,6 +175,9 @@ const Navbar = () => {
   const onMouseLeave = () => {
     setDropdown(false)
   }
+  const extendElement = () => {
+    dropdown ? setDropdown(false) : setDropdown(true)
+  }
 
   return (
     <>
@@ -196,11 +198,11 @@ const Navbar = () => {
             </NavLinks>
           </NavItem>
           <NavItem onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
-            <NavLinks to='/services' onClick={closeMobileMenu}>
+            <NavLinks to='/services' onClick={extendElement}>
               서비스{' '}
               <Icon className='fas fa-caret-down' cname='fa-caret-down' />
             </NavLinks>
-            {dropdown && <Dropdown />}
+            {dropdown && <Dropdown onCloseMobileMenu={closeMobileMenu} />}
           </NavItem>
           <NavItem>
             <NavLinks to='/contact-us' onClick={closeMobileMenu}>

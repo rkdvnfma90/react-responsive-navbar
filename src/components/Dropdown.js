@@ -10,6 +10,12 @@ const DropdownMenu = styled.ul`
   list-style: none;
   text-align: start;
   display: ${({ clicked }) => (clicked ? 'none' : 'block')};
+
+  @media screen and (max-width: 960px) {
+    width: 100%;
+    top: 170px;
+    text-align: center;
+  }
 `
 
 const DropdownItem = styled.li`
@@ -29,13 +35,12 @@ const DropdownLink = styled(Link)`
   padding: 16px;
 `
 
-const Dropdown = () => {
+const Dropdown = ({ onCloseMobileMenu }) => {
   const [click, setClick] = useState(false)
-  const handleClick = () => setClick(!click)
 
   return (
     <>
-      <DropdownMenu onClick={handleClick} clicked={click}>
+      <DropdownMenu onClick={onCloseMobileMenu} clicked={click}>
         {menuitems.map((item, index) => (
           <DropdownItem key={index}>
             <DropdownLink
