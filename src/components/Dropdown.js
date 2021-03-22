@@ -11,7 +11,7 @@ const DropdownMenu = styled.ul`
   text-align: start;
   display: ${({ clicked }) => (clicked ? 'none' : 'block')};
 
-  @media screen and (max-width: 960px) {
+  @media ${({ theme }) => theme.tablet} {
     width: 100%;
     top: 170px;
     text-align: center;

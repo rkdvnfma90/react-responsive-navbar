@@ -20,7 +20,7 @@ const NavbarLogo = styled(Link)`
   text-decoration: none;
   font-size: 2rem;
 
-  @media screen and (max-width: 960px) {
+  @media ${({ theme }) => theme.tablet} {
     position: absolute;
     top: 0;
     left: 0;
@@ -31,7 +31,7 @@ const NavbarLogo = styled(Link)`
 const MenuIcon = styled.div`
   display: none;
 
-  @media screen and (max-width: 960px) {
+  @media ${({ theme }) => theme.tablet} {
     display: block;
     position: absolute;
     top: 0;
@@ -76,7 +76,7 @@ const NavMenu = styled.ul`
   justify-content: end;
   margin-right: 2rem;
 
-  @media screen and (max-width: 960px) {
+  @media ${({ theme }) => theme.tablet} {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -114,7 +114,7 @@ const NavLinks = styled(Link)`
     transition: all 0.2s ease-out;
   }
 
-  @media screen and (max-width: 960px) {
+  @media ${({ theme }) => theme.tablet} {
     text-align: center;
     padding: 2rem;
     width: 100%;
@@ -130,7 +130,7 @@ const NavLinks = styled(Link)`
 const NavLinksMobile = styled(Link)`
   display: none;
 
-  @media screen and (max-width: 960px) {
+  @media ${({ theme }) => theme.tablet} {
     display: block;
     text-align: center;
     padding: 1.5rem;

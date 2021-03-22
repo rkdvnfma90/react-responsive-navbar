@@ -20,7 +20,7 @@ const StyledButton = styled.button`
     border: 2px solid ${({ theme }) => theme.primaryColor};
   }
 
-  @media screen and (max-width: 960px) {
+  @media ${({ theme }) => theme.tablet} {
     display: none;
   }
 `
