@@ -35,7 +35,6 @@ const Dropdown = () => {
 
   return (
     <>
-      {/* click ? 'dropdown-menu clicked' : 'dropdown-menu' */}
       <DropdownMenu onClick={handleClick} clicked={click}>
         {menuitems.map((item, index) => (
           <DropdownItem key={index}>
