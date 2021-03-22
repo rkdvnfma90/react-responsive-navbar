@@ -62,15 +62,6 @@ const IconStyles = css`
       color: #fff;
       font-size: 2rem;
     `}
-
-    ${({ cname }) =>
-    cname === 'fa-caret-down' &&
-    css`
-      color: #fff;
-      @media screen and (max-width: 960px) {
-        display: none;
-      }
-    `}
 `
 const Icon = styled.i`
   ${IconStyles}
