@@ -145,10 +145,20 @@ const NavLinksMobile = styled(Link)`
 
 const Navbar = () => {
   const [click, setClick] = useState(false)
-  const [dropdown, setDropdown] = useState(true)
+  const [dropdown, setDropdown] = useState(false)
 
   const handleClick = () => setClick(!click)
   const closeMobileMenu = () => setClick(false)
+  const onMouseEnter = () => {
+    if (window.innerWidth < 960) {
+      setDropdown(false)
+    } else {
+      setDropdown(true)
+    }
+  }
+  const onMouseLeave = () => {
+    setDropdown(false)
+  }
 
   return (
     <>
@@ -168,7 +178,7 @@ const Navbar = () => {
               홈
             </NavLinks>
           </NavItem>
-          <NavItem>
+          <NavItem onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
             <NavLinks to='/services' onClick={closeMobileMenu}>
               서비스 <Icon className='fas fa-caret-down' />
             </NavLinks>
